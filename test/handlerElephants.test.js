@@ -25,4 +25,7 @@ describe('Testes da função HandlerElephants', () => {
   it('Verifica se o parâmetro availability retorna um array com os dias de visitação disponíveis', () => {
     expect(handlerElephants('availability')).toEqual(['Friday', 'Saturday', 'Sunday', 'Tuesday']);
   });
+  it('Verifica se o parâmetro de string vazia retorna null', () => {
+    expect(handlerElephants('')).toBe(null);
+  });
 });
