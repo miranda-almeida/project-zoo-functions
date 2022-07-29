@@ -33,7 +33,6 @@ console.log(daySchedule('Tuesday')); // returning undefined
 function getSchedule(scheduleTarget) {
   const finder = data.species.find((names) => names.name === scheduleTarget);
   return finder.availability;
-
 }
 // console.log(getSchedule('lions'));
 module.exports = getSchedule;
