@@ -1,25 +1,18 @@
 const data = require('../data/zoo_data');
 
-const counter = () =>
-  data.species.reduce((accumulator, specie) => {
-    accumulator[specie.name] = specie.residents.length;
-    return accumulator;
-  }, {});
-
-const finder = (names) => data.species.find((specie) => specie.name === names.specie).residents;
-
-const gender = (names) => finder(names).filter((residents) => residents.sex === names.sex);
-
 function countAnimals(animal) {
   if (!animal) {
-    return counter();
+    return data.species.reduce((accumulator, specie) => {
+      accumulator[specie.name] = specie.residents.length;
+      return accumulator;
+    }, {});
   }
   if (animal.sex) {
-    return gender(animal).length;
+    return data.species
+      .filter((specie) => specie.name === animal.specie)[0]
+      .residents.filter((residents) => residents.sex === animal.sex).length;
   }
-  if (!animal.sex) {
-    return finder(animal).length;
-  }
+  return data.species.filter((specie) => specie.name === animal.specie)[0].residents.length;
 }
 
 module.exports = countAnimals;
